@@ -55,3 +55,4 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80
 
 ENTRYPOINT ["/usr/sbin/apache2ctl","-DFOREGROUND"]
+#CMD ["/bin/bash"]

@@ -1,4 +1,6 @@
 FROM ubuntu:17.10
+ENV DEBIAN_FRONTEND=noninteractive
+
 MAINTAINER Marcos Freitas <marcosfreitas@c4network.com.br>
 
 # clean and update sources
@@ -19,7 +21,7 @@ RUN apt-get update && apt-get install -y software-properties-common nano exif
 
 RUN add-apt-repository ppa:ondrej/php
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive && apt-get install -y libbz2-dev libfreetype6-dev libjpeg-dev libtiff-dev libgd-dev libmcrypt-dev libpng-dev libxml2-dev zlib1g-dev \
+RUN apt-get update &&  apt-get install -y libbz2-dev libfreetype6-dev libjpeg-dev libtiff-dev libgd-dev libmcrypt-dev libpng-dev libxml2-dev zlib1g-dev \
     php7.1 \
     libapache2-mod-php7.1 php7.1-fpm php7.1-dev php7.1-cli php7.1-common php7.1-intl php7.1-bcmath php7.1-mbstring php7.1-soap php7.1-xml \
     php7.1-zip php7.1-apcu php7.1-json php7.1-gd php7.1-curl php7.1-mcrypt php7.1-mysql php7.1-sqlite php-memcached php7.1-mbstring \
@@ -34,17 +36,6 @@ ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
 COPY config/php.ini /usr/local/etc/php/
-
-RUN mkdir -p app/cache \
-    mkdir -p core \
-    mkdir -p app/database \
-    mkdir -p public/themes \
-    mkdir -p public/files \
-    mkdir -p public/views \
-    mkdir -p public/uploads/thumbs \
-    mkdir -p public/extensions \
-    mkdir -p extensions \
-    mkdir -p vendor
 
 # Copy this repo into place.
 COPY src/ /var/www/html/

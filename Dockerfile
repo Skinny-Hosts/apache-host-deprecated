@@ -56,6 +56,5 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80
 
 CMD ["service","apache2","start"]
-
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
 

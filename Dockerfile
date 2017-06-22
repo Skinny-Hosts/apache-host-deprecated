@@ -47,8 +47,8 @@ RUN a2enmod headers
 RUN a2enmod rewrite
 #CMD ["/usr/sbin/apache2ctl","restart
 
-# make the webroot a volume
-VOLUME /var/www/html/
+# make the src a volume
+#VOLUME ["/var/www/html/Projects/docker/skinny-host/src/:/var/www/html/"]
 
 RUN chown -R www-data:www-data /var/www/html
 

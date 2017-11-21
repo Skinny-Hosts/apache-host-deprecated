@@ -37,9 +37,6 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 
 COPY config/php.ini /usr/local/etc/php/
 
-# Copy this repo into place.
-COPY src/ /var/www/html/
-
 # Update the default apache site with the config we created.
 ADD config/apache2.conf /etc/apache2/sites-enabled/000-default.conf
 
@@ -48,11 +45,11 @@ RUN a2enmod rewrite
 #CMD ["/usr/sbin/apache2ctl","restart
 
 # make the src a volume
-#VOLUME ["/var/www/html/Projects/docker/skinny-host/src/:/var/www/html/"]
+#VOLUME ["www/:/var/www/html/"]
 
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
 
-ENTRYPOINT ["/usr/sbin/apache2ctl","-DFOREGROUND"]
-#CMD ["/bin/bash"]
+#ENTRYPOINT ["/usr/sbin/apache2ctl","-DFOREGROUND"]
+CMD ["/bin/bash"]

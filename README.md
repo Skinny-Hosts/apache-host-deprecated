@@ -1,4 +1,4 @@
-# Skinny Host with ubuntu17.10 + php7.1 + apache2
+# Skinny Host with ubuntu17.10 + php7.1 + apache2 [DEPRECATED]
 It's a gracefully configured image to run some projects php.
 Without mysql-server, It's had configured mysql-client and php modules for mysql.
 Also, MySQL Server should be orchestrated by a docker-compose.yml file.
